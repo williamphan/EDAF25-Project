@@ -14,3 +14,6 @@
 *.xmi 
 *.txt
 .metadata/
+.classpath
+.project
+.settings
