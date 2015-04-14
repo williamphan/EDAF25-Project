@@ -1,3 +1,9 @@
+package Computer;
+
+import Data.Address;
+import Data.*;
+import Instruction.*;
+
 /**
  * Created by will on 2015-02-20.
  */
