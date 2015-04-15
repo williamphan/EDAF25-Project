@@ -8,20 +8,18 @@ import Data.Data;
  */
 public class Print implements Instruction {
 
-    private Data data;
+	private Data data;
 
-    public Print(Data data) {
-        this.data = data;
-    }
+	public Print(Data data) {
+		this.data = data;
+	}
 
-    @Override
-    public int run(Memory memory, int counter) {
-        //TODO
-    	return counter++;
-    }
+	@Override
+	public int run(Memory memory, int counter) {
+		return counter++;
+	}
 
-    public String toString() {
-        //TODO
-        return null;
-    }
+	public String toString() {
+		return "PRT " + data.toString();
+	}
 }
