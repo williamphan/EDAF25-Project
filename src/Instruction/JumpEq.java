@@ -29,6 +29,6 @@ public class JumpEq implements Instruction {
 
     public String toString() {
         //TODO
-        return null;
+        return "JEQ " + jump + " [" + data1.getValue(memory) + "] " + data2.getValue(memory);
     }
 }
