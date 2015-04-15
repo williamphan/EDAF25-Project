@@ -14,7 +14,7 @@ public class Jump implements Instruction {
     @Override
     public int run(Memory memory, int counter) {
         //TODO
-    	return index;
+    	return counter+index;
     }
 
     public String toString() {

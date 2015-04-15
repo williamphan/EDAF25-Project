@@ -20,7 +20,11 @@ public class JumpEq implements Instruction {
     @Override
     public int run(Memory memory, int counter) {
         //TODO
-    	return jump;
+    	if(data1.getValue(memory) == data2.getValue(memory)){
+    		return jump;    		
+    	}else{
+    		return counter+1;
+    	}
     }
 
     public String toString() {
