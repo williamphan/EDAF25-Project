@@ -9,7 +9,7 @@ import Data.Memory;
 public class JumpEq implements Instruction {
 
     private Data data1, data2;
-    int jump;
+    private int jump;
 
     public JumpEq(int jump, Data data1, Data data2) {
         this.data1 = data1;
@@ -27,8 +27,6 @@ public class JumpEq implements Instruction {
     }
 
     public String toString() {
-        return "JumpEQ";
-        //Not working atm
-        //return "JEQ " + jump + " " + data1.getValue(memory) + " " + data2.getValue(memory);
+        return "JEQ " + jump + " " + data1 + " " + data2;
     }
 }
