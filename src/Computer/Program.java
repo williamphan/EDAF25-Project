@@ -13,11 +13,11 @@ public class Program extends ArrayList<Instruction> {
     	String returnString = "";
     	int index = 0;
     	for (Instruction instruction : this) {
-    		returnString += index + " " + instruction.toString();
+    		returnString += index + " " + instruction.toString() + "\n";
     		index++;
     	}
+    	returnString += "\n";
     	//TODO: returnString += resultatet??
         return returnString;
     }
-
 }
