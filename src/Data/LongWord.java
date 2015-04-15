@@ -5,25 +5,23 @@ package Data;
  */
 public class LongWord extends Word<Long> {
 
-    private long word;
-
-    public LongWord(long word) {
-        this.word = word;
+    public LongWord(long word){
+        super(word);
     }
 
     @Override
-    public void cpy(Word w1) {
-        //TODO
+    public void copy(Word w1) {
+        word =  ((LongWord)w1).getValue();
     }
 
     @Override
     public void add(Word w1, Word w2) {
-        //TODO
+        word = ((LongWord)w1).getValue() + ((LongWord)w2).getValue();
     }
 
     @Override
     public void mul(Word w1, Word w2) {
-        //TODO
+        word = ((LongWord)w1).getValue() * ((LongWord)w2).getValue();
     }
 
     @Override
