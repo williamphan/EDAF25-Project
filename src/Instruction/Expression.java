@@ -17,10 +17,10 @@ public abstract class Expression implements Instruction {
         this.address = address;
     }
 
-    protected abstract void op(Word w1, Word w2, Address address);
+    protected abstract void op(Word w1, Word w2, Word address);
 
     public int run(Memory memory, int counter) {
-        op(data1.getValue(memory), data2.getValue(memory), address);
+        op(data1.getValue(memory), data2.getValue(memory), address.getValue(memory));
         return counter++;
     }
 

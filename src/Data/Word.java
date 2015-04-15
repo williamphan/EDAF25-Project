@@ -11,13 +11,13 @@ public abstract class Word<T> implements Data {
         this.word = word;
     }
 
-    protected abstract T getValue();
+    public abstract T getValue();
 
-    protected abstract void copy(Word w1);
+    public abstract void copy(Word w1);
 
-    protected abstract void add(Word w1, Word w2);
+    public abstract void add(Word w1, Word w2);
 
-    protected abstract void mul(Word w1, Word w2);
+    public abstract void mul(Word w1, Word w2);
 
     public abstract String toString();
 }

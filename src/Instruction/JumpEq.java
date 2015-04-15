@@ -19,14 +19,16 @@ public class JumpEq implements Instruction {
 
     @Override
     public int run(Memory memory, int counter) {
-    	if(data1.getValue(memory) == data2.getValue(memory)){
-    		return jump;    		
-    	}else{
-    		return counter+1;
-    	}
+        if (data1.getValue(memory) == data2.getValue(memory)) {
+            return jump;
+        } else {
+            return counter + 1;
+        }
     }
 
     public String toString() {
-        return "JEQ " + jump + " " + data1.getValue(memory) + " " + data2.getValue(memory);
+        return "JumpEQ";
+        //Not working atm
+        //return "JEQ " + jump + " " + data1.getValue(memory) + " " + data2.getValue(memory);
     }
 }
