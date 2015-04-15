@@ -2,9 +2,6 @@ package Instruction;
 
 import Data.*;
 
-/**
- * Created by will on 4/14/15.
- */
 public abstract class Expression implements Instruction {
 
     protected Data data1;
@@ -23,10 +20,4 @@ public abstract class Expression implements Instruction {
         op(data1.getValue(memory), data2.getValue(memory), address.getValue(memory));
         return counter++;
     }
-
-    public String toString() {
-        //TODO
-        return null;
-    }
-
 }

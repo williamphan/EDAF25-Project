@@ -3,9 +3,6 @@ package Instruction;
 import Data.Data;
 import Data.Memory;
 
-/**
- * Created by will on 2015-02-20.
- */
 public class JumpEq implements Instruction {
 
     private Data data1, data2;

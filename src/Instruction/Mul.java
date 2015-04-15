@@ -4,9 +4,6 @@ import Data.Address;
 import Data.Data;
 import Data.Word;
 
-/**
- * Created by will on 2015-02-20.
- */
 public class Mul extends Expression {
 
     public Mul(Data data1, Data data2, Address address) {
@@ -19,6 +16,6 @@ public class Mul extends Expression {
     }
 
     public String toString() {
-        return "MUL " + data1 + " " + data2 + " " + address.toString();
+        return "MUL " + data1 + " " + data2 + " " + address;
     }
 }

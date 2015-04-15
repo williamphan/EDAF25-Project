@@ -4,15 +4,10 @@ import Data.Address;
 import Data.*;
 import Instruction.*;
 
-/**
- * Created by will on 2015-02-20.
- */
-
-//TEST
 public class Factorial extends Program {
     public Factorial() {
         Address n = new Address(0),
-            fac = new Address(1);
+                fac = new Address(1);
         add(new Copy(new LongWord(5), n));
         add(new Copy(new LongWord(1), fac));
         add(new JumpEq(6, n, new LongWord(1)));
