@@ -13,12 +13,10 @@ public class Jump implements Instruction {
 
     @Override
     public int run(Memory memory, int counter) {
-        //TODO
-    	return counter+index;
+    	return index;
     }
 
     public String toString() {
-        //TODO
-        return null;
+        return "JMP " + index;
     }
 }
