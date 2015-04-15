@@ -24,7 +24,6 @@ public class Copy implements Instruction {
     }
 
     public String toString(){
-        //TODO
-        return null;
+        return "CPY " + data.toString() + " " + address.toString();
     }
 }
