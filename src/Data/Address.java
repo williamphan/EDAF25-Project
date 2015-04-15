@@ -18,6 +18,6 @@ public class Address implements Data {
     }
 
     public String toString(){
-        return String.valueOf(index);
+        return "[" + String.valueOf(index) + "]";
     }
 }
