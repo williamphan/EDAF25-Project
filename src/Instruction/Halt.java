@@ -13,7 +13,6 @@ public class Halt implements Instruction {
     }
 
     public String toString() {
-        //TODO
-        return null;
+        return "HLT";
     }
 }
