@@ -22,7 +22,6 @@ public class Computer {
 	public void run() {
 		while (counter > -1) {
 			counter = program.get(counter).run(memory, counter);
-			// tset
 		}
 	}
 }

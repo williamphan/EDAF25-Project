@@ -19,9 +19,9 @@ public abstract class Expression implements Instruction {
 
     protected abstract void op(Word w1, Word w2, Address address);
 
-    public void run(Memory memory, int counter) {
+    public int run(Memory memory, int counter) {
         op(data1.getValue(memory), data2.getValue(memory), address);
-        counter++;
+        return counter++;
     }
 
     public String toString() {

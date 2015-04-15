@@ -18,8 +18,9 @@ public class JumpEq implements Instruction {
     }
 
     @Override
-    public void run(Memory memory, int counter) {
+    public int run(Memory memory, int counter) {
         //TODO
+    	return jump;
     }
 
     public String toString() {
