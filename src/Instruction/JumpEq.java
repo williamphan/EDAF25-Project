@@ -19,7 +19,6 @@ public class JumpEq implements Instruction {
 
     @Override
     public int run(Memory memory, int counter) {
-        //TODO
     	if(data1.getValue(memory) == data2.getValue(memory)){
     		return jump;    		
     	}else{
@@ -28,7 +27,6 @@ public class JumpEq implements Instruction {
     }
 
     public String toString() {
-        //TODO
-        return "JEQ " + jump + " [" + data1.getValue(memory) + "] " + data2.getValue(memory);
+        return "JEQ " + jump + " " + data1.getValue(memory) + " " + data2.getValue(memory);
     }
 }
