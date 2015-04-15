@@ -10,8 +10,14 @@ public class Program extends ArrayList<Instruction> {
 
     }
     public String toString(){
-       //TODO
-        return null;
+    	String returnString = "";
+    	int index = 0;
+    	for (Instruction instruction : this) {
+    		returnString += index + " " + instruction.toString();
+    		index++;
+    	}
+    	//TODO: returnString += resultatet??
+        return returnString;
     }
 
 }
