@@ -20,6 +20,6 @@ public class Print implements Instruction {
 	}
 
 	public String toString() {
-		return "PRT " + data.toString();
+		return "PRT " + data;
 	}
 }

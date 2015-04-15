@@ -18,6 +18,6 @@ public class Add extends Expression {
 	}
 
 	public String toString() {
-		return "ADD " + data1.toString() + " " + data2.toString() + " " + address.toString();
+		return "ADD " + data1 + " " + data2 + " " + address.toString();
 	}
 }

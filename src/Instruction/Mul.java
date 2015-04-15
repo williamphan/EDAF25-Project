@@ -19,6 +19,6 @@ public class Mul extends Expression {
     }
 
     public String toString() {
-        return "MUL " + data1.toString() + " " + data2.toString() + " " + address.toString();
+        return "MUL " + data1 + " " + data2 + " " + address.toString();
     }
 }
