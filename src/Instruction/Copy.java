@@ -2,12 +2,8 @@ package Instruction;
 
 import Data.Address;
 import Data.Data;
-import Data.LongWord;
 import Data.Memory;
 
-/**
- * Created by will on 2015-02-20.
- */
 public class Copy implements Instruction {
     private Data data;
     private Address address;
@@ -23,7 +19,7 @@ public class Copy implements Instruction {
         return counter++;
     }
 
-    public String toString(){
-        return "CPY " + data.toString() + " " + address.toString();
+    public String toString() {
+        return "CPY " + data + " " + address;
     }
 }
