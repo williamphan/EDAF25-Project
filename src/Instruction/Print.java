@@ -13,10 +13,12 @@ public class Print implements Instruction {
 
     @Override
     public int run(Memory memory, int counter) {
-        return counter++;
+        System.out.println(data.getValue(memory));
+        return ++counter;
     }
 
     public String toString() {
         return "PRT " + data;
     }
+
 }

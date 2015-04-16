@@ -9,6 +9,6 @@ public class Halt implements Instruction {
     }
 
     public String toString() {
-        return "HLT";
+        return "HLT\n " ;
     }
 }

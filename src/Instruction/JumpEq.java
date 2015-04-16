@@ -16,10 +16,10 @@ public class JumpEq implements Instruction {
 
     @Override
     public int run(Memory memory, int counter) {
-        if (data1.getValue(memory) == data2.getValue(memory)) {
+        if (data1.getValue(memory).eq(data2.getValue(memory))) {
             return jump;
         } else {
-            return counter + 1;
+            return ++counter;
         }
     }
 

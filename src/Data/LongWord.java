@@ -17,6 +17,15 @@ public class LongWord extends Word<Long> {
     }
 
     @Override
+    public boolean eq(Word w1) {
+        if (((LongWord) w1).getValue() == word) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     public Word getValue(Memory memory) {
         return this;
     }

@@ -16,7 +16,7 @@ public class Copy implements Instruction {
     @Override
     public int run(Memory memory, int counter) {
         memory.add(address.getIndex(), data.getValue(memory));
-        return counter++;
+        return ++counter;
     }
 
     public String toString() {

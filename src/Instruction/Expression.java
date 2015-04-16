@@ -18,6 +18,6 @@ public abstract class Expression implements Instruction {
 
     public int run(Memory memory, int counter) {
         op(data1.getValue(memory), data2.getValue(memory), address.getValue(memory));
-        return counter++;
+        return ++counter;
     }
 }
