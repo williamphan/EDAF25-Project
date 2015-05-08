@@ -8,12 +8,5 @@
 *.dat 
 *.index 
 *.tree 
-*.resources 
-*.prefs 
 *.xml 
 *.xmi 
-*.txt
-.metadata/
-.classpath
-.project
-.settings
