@@ -1,6 +1,5 @@
 package Model;
 
-import expr.Environment;
 import expr.Expr;
 
 public class ExprSlot implements Slot {
@@ -11,17 +10,11 @@ public class ExprSlot implements Slot {
     }
 
     @Override
-    public double value(Environment env) {
-        return expr.value(env);
+    public double value() {
+        return 0;
     }
 
-    @Override
     public String toString() {
         return expr.toString();
-    }
-    
-    @Override
-    public String print() {
-    	return toString();
     }
 }

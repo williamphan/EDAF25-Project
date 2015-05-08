@@ -11,16 +11,11 @@ public class TextSlot implements Slot {
 
     @Override
     public double value(Environment env) {
-        return 0;
+        return expr.value(env);
     }
 
     @Override
     public String toString(){
         return text;
-    }
-    
-    @Override
-    public String print(){
-    	return toString();
     }
 }

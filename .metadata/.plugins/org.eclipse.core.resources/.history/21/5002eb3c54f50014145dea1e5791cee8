@@ -18,9 +18,4 @@ public class TextSlot implements Slot {
     public String toString(){
         return text;
     }
-    
-    @Override
-    public String print(){
-    	return toString();
-    }
 }

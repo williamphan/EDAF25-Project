@@ -15,13 +15,7 @@ public class ExprSlot implements Slot {
         return expr.value(env);
     }
 
-    @Override
     public String toString() {
         return expr.toString();
-    }
-    
-    @Override
-    public String print() {
-    	return toString();
     }
 }
