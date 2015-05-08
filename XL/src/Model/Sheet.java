@@ -22,7 +22,7 @@ public class Sheet extends Observable implements Environment {
 			return false;
 
 		map.put(key, value);
-		// Notify?
+		notifyObservers();
 
 		return true;
 	}
@@ -35,16 +35,29 @@ public class Sheet extends Observable implements Environment {
 	 * @return True if circular dependency is detected, false otherwise.
 	 */
 	private boolean checkCircular(String key, Slot value) {
-		return false;
+		Slot previousSlot = map.get(key);
+
+		map.put(key, value);
+
+		try {
+			value.value(this);
+		} catch (XLException e) {
+			System.out.println(e.toString());
+			return false;
+		}
+
+		map.put(key, previousSlot);
+
+		return true;
 	}
 
 	// Plats för fler metoder
 
 	@Override
 	public double value(String name) {
-		if (map.get(name) == null) 
+		if (map.get(name) == null)
 			throw new XLException(name + " does not exist in the sheet.");
-		
+
 		return map.get(name).value(this);
 	}
 }
