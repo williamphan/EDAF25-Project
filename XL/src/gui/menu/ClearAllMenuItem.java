@@ -17,6 +17,6 @@ class ClearAllMenuItem extends JMenuItem implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        sheet.clearAll();
+        sheet.clear();
     }
 }
