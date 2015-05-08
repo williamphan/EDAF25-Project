@@ -10,3 +10,7 @@
 *.tree 
 *.xml 
 *.xmi 
+*.prefs
+*.snap
+*.resources
+*.index
