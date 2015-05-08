@@ -17,7 +17,8 @@ public class Sheet extends Observable implements Environment {
 	/**
 	 * @return True if slot was added, false otherwise.
 	 */
-	public boolean addSlot(String key, Slot value) {
+	public boolean addSlot(String key, String text) {
+		Slot value = new Slot();
 		if (checkCircular(key, value))
 			return false;
 
