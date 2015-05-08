@@ -37,7 +37,8 @@ public class Sheet extends Observable implements Environment {
 	private boolean checkCircular(String key, Slot value) {
 		Slot previousSlot = map.get(key);
 
-		map.put(key, value);
+		FakeSlot fakeSlot = new FakeSlot();
+		map.put(key, fakeSlot);
 
 		try {
 			value.value(this);
