@@ -22,20 +22,38 @@ public class Sheet extends Observable implements Environment {
 			return false;
 
 		map.put(key, value);
+		setChanged();
 		notifyObservers();
 
 		return true;
 	}
 
+	/**
+	 * @return True if slot was removed, false otherwise.
+	 */
 	public boolean removeSlot(String key) {
-		return false;
+		Slot currentSlot = map.get(key);
+		
+		try {
+			// något
+		} catch (XLException e) {
+			// något annat
+			
+			return false;
+		}
+		
+		map.remove(key);
+		setChanged();
+		notifyObservers();
+		
+		return true;
 	}
 
 	/**
 	 * @return True if circular dependency is detected, false otherwise.
 	 */
 	private boolean checkCircular(String key, Slot value) {
-		Slot previousSlot = map.get(key);
+		Slot currentSlot = map.get(key);
 
 		FakeSlot fakeSlot = new FakeSlot();
 		map.put(key, fakeSlot);
@@ -47,7 +65,7 @@ public class Sheet extends Observable implements Environment {
 			return true;
 		}
 
-		map.put(key, previousSlot);
+		map.put(key, currentSlot);
 
 		return false;
 	}
