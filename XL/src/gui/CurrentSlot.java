@@ -18,7 +18,7 @@ public class CurrentSlot extends Observable {
     }
 
     public String toString(){
-        return null;
+        return currentLabel.toString();
     }
 
 }

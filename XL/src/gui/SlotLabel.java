@@ -1,5 +1,7 @@
 package gui;
 
+import Model.Sheet;
+
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,21 +11,22 @@ import java.util.Observer;
 public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
     private CurrentSlot currentSlot;
     private String position;
+    private Sheet sheet;
 
-    public SlotLabel(String position, CurrentSlot currentSlot) {
-        super("        "+position+"          ", Color.WHITE, RIGHT);
+    public SlotLabel(String position, CurrentSlot currentSlot, Sheet sheet) {
+        super("                    ", Color.WHITE, RIGHT);
         addMouseListener(this);
         this.currentSlot = currentSlot;
         this.position = position;
-
-        //Observer till sheet
+        this.sheet = sheet;
+        sheet.addObserver(this);
 
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        // setText()
-        System.out.println(currentSlot.countObservers());
+        this.setText(sheet.print(position));
+//        System.out.println("Observers: " + currentSlot.countObservers());
         currentSlot.deleteObserver(this);
 
     }
