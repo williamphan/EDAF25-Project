@@ -1,0 +1,3 @@
+INDEX VERSION 1.127+C:\Users\Administratör\Documents\GitHub\EDAF25-Project\.metadata\.plugins\org.eclipse.jdt.core
+1285798997.index
+2549077025.index
