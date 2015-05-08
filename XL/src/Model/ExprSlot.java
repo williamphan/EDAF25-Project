@@ -21,7 +21,7 @@ public class ExprSlot implements Slot {
     }
     
     @Override
-    public String print() {
-    	return toString();
+    public String print(Environment env) {
+    	return Double.toString(value(env));
     }
 }

@@ -11,8 +11,7 @@ public class FakeSlot implements Slot {
 	}
 
 	@Override
-	public String print() {
+	public String print(Environment env) {
 		throw new XLException("The fake slot has nothing to print");
-		//tja
 	}
 }

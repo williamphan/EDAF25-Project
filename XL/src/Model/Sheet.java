@@ -31,14 +31,14 @@ public class Sheet extends Observable implements Environment {
 	/**
 	 * @return True if slot was removed, false otherwise.
 	 */
-	public boolean removeSlot(String key) throws XLException {
+	public boolean removeSlot(String key) {
 		if (addSlot(key, new FakeSlot())) {
 			map.remove(key);
 			setChanged();
 			notifyObservers();
 			return true;
 		} else {
-			throw new XLException(key + " could not be removed.");
+			return false;
 		}
 	}
 
@@ -53,7 +53,6 @@ public class Sheet extends Observable implements Environment {
 		try {
 			value.value(this);
 		} catch (XLException e) {
-			System.out.println(e.toString());
 			return true;
 		}
 
@@ -62,13 +61,24 @@ public class Sheet extends Observable implements Environment {
 		return false;
 	}
 
-	// Plats för fler metoder
+	public String print(String name) {
+		Slot slot = map.get(name);
+		if (slot == null)
+			return "";
 
-	@Override
+		return slot.print(this);
+	}
+
 	public double value(String name) {
 		if (map.get(name) == null)
 			throw new XLException(name + " does not exist in the sheet.");
 
 		return map.get(name).value(this);
+	}
+
+	public void clear() {
+		map = new HashMap<String, Slot>();
+		setChanged();
+		notifyObservers();
 	}
 }

@@ -20,7 +20,7 @@ public class TextSlot implements Slot {
     }
     
     @Override
-    public String print(){
+    public String print(Environment env){
     	return toString();
     }
 }
