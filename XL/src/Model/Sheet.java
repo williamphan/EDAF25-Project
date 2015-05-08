@@ -61,8 +61,8 @@ public class Sheet extends Observable implements Environment {
 		return false;
 	}
 
-	public String print(String name) {
-		Slot slot = map.get(name);
+	public String print(String key) {
+		Slot slot = map.get(key);
 		if (slot == null)
 			return "";
 
