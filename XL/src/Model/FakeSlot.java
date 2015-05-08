@@ -12,6 +12,6 @@ public class FakeSlot implements Slot {
 
 	@Override
 	public String print() {
-		return this.toString();
+		throw new XLException("The fake slot has nothing to print");
 	}
 }
