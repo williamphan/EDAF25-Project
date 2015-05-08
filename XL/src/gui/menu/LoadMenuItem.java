@@ -25,6 +25,8 @@ class LoadMenuItem extends OpenMenuItem {
     	try{
     		while((line = br.readLine()) != null){
     			///////
+    			
+    			current++;
     		}
     	}
     	catch(IOException ex){
