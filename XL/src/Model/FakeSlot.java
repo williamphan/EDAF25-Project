@@ -5,13 +5,13 @@ import expr.Environment;
 
 public class FakeSlot implements Slot {
 
-	@Override
-	public double value(Environment env) throws XLException {
-		throw new XLException("Circular dependency");
-	}
+    @Override
+    public double value(Environment env) throws XLException {
+        throw new XLException("Circular dependency");
+    }
 
-	@Override
-	public String print(Environment env) {
-		throw new XLException("The fake slot has nothing to print");
-	}
+    @Override
+    public String print(Environment env) {
+        throw new XLException("The fake slot has nothing to print");
+    }
 }

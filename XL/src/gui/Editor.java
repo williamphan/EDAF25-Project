@@ -15,7 +15,6 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
     public Editor(CurrentSlot currentSlot, Sheet sheet) {
         setBackground(Color.WHITE);
-        setText(currentSlot.toString());
         addActionListener(this);
         this.currentSlot = currentSlot;
         currentSlot.addObserver(this);
@@ -23,10 +22,20 @@ public class Editor extends JTextField implements ActionListener, Observer {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        //TODO Error message, "remove"
-        if(!sheet.addSlot(currentSlot.toString(), this.getText())){
-        //ERROR ERROR
+    public void actionPerformed(ActionEvent event) {
+        String key = this.getText();
+
+        if(key.equals("")){
+            System.out.println("woohoo");
+            sheet.removeSlot(key);
+            return;
+        }
+
+        try {
+            sheet.addSlot(currentSlot.toString(), key);
+        } catch (Exception e) {
+            System.out.println("Edtior ERROR: " + e.getMessage());
+            //TODO Error message here
         }
     }
 

@@ -3,7 +3,7 @@ package Model;
 import expr.ExprParser;
 
 public class SlotFactory {
-	public Slot create(String text) {
+	public static Slot create(String text) {
 		if (text.length() > 0 && text.charAt(0) == '#') {
 			return new TextSlot(text);
 		}
