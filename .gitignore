@@ -16,3 +16,5 @@
 *.index
 .metadata/
 *.png
+.recommenders/
+.metadata/

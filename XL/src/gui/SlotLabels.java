@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 
 public class SlotLabels extends GridPanel {
     private List<SlotLabel> labelList;
+    private SlotLabel currentLabel;
 
     public SlotLabels(int rows, int cols) {
         super(rows + 1, cols);
@@ -22,7 +23,7 @@ public class SlotLabels extends GridPanel {
                 labelList.add(label);
             }
         }
-        SlotLabel firstLabel = labelList.get(0);
-        firstLabel.setBackground(Color.YELLOW);
+        currentLabel= labelList.get(0);
+        currentLabel.setBackground(Color.YELLOW);
     }
 }
