@@ -25,10 +25,15 @@ public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        this.setText(sheet.print(position));
+        String text = sheet.print(position);
+        this.setText(text);
+        if (text.contains("ERROR")) {
+            this.setBackground(Color.RED);
+        } else if (this.getBackground() != Color.yellow) {
+            this.setBackground(Color.WHITE);
+        }
 //        System.out.println("Observers: " + currentSlot.countObservers());
         currentSlot.deleteObserver(this);
-
     }
 
     public String toString() {

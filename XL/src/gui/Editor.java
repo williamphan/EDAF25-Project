@@ -1,6 +1,7 @@
 package gui;
 
 import Model.Sheet;
+import util.XLException;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -15,33 +16,27 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
     public Editor(CurrentSlot currentSlot, Sheet sheet) {
         setBackground(Color.WHITE);
-        addActionListener(this);
         this.currentSlot = currentSlot;
-        currentSlot.addObserver(this);
         this.sheet = sheet;
+        addActionListener(this);
+        currentSlot.addObserver(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
         String key = this.getText();
 
-        if(key.equals("")){
-            System.out.println("woohoo");
-            sheet.removeSlot(key);
+        if (key.equals("")) {
+            sheet.removeSlot(currentSlot.toString());
             return;
         }
 
-        try {
-            sheet.addSlot(currentSlot.toString(), key);
-        } catch (Exception e) {
-            System.out.println("Edtior ERROR: " + e.getMessage());
-            //TODO Error message here
-        }
+        sheet.addSlot(currentSlot.toString(), key);
+
     }
 
     @Override
     public void update(Observable o, Object arg) {
-//        currentSlot.toString()
-//        setText();
+        setText(sheet.printExpr(currentSlot.toString()));
     }
 }

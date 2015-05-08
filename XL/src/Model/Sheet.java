@@ -9,6 +9,14 @@ import util.XLException;
 
 public class Sheet extends Observable implements Environment {
     private HashMap<String, Slot> map;
+    private String currentError = "", errorKey = "";
+
+    //TODO: Fixa error vid borttagning av ett beroende
+    //TODO: Cirkulärt = röda rutor?
+    //TODO: Exception vid felinmatning
+    //TODO: Menu, load, save osv.
+
+
 
     public Sheet() {
         map = new HashMap<String, Slot>();
@@ -17,36 +25,33 @@ public class Sheet extends Observable implements Environment {
     /**
      * @return True if slot was added, false otherwise.
      */
-    public boolean addSlot(String key, String text) {
+    public void addSlot(String key, String text) {
         Slot value = SlotFactory.create(text);
-        if (checkCircular(key, value))
-            return false;
-
-        map.put(key, value);
+        if (checkCircular(key, value)) {
+            errorKey = key;
+            currentError = "Circular ERROR in " + errorKey;
+        } else {
+            if (key.equals(errorKey)) {
+                currentError = "";
+            }
+            map.put(key, value);
+        }
         setChanged();
         notifyObservers();
-
-        return true;
     }
 
     /**
      * @return True if slot was removed, false otherwise.
      */
     public boolean removeSlot(String key) {
-//		if (addSlot(key, new FakeSlot())) {
-//			map.remove(key);
-//			setChanged();
-//			notifyObservers();
-//			return true;
-//		} else {
-//			return false;
-//		}
-        System.out.println(map.remove(key));
-        System.out.println(map.get(key));
-        setChanged();
-        notifyObservers();
-        System.out.println("ofijadfa");
-        return false;
+        if (map.containsKey(key)) {
+            map.remove(key);
+            setChanged();
+            notifyObservers();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -74,8 +79,25 @@ public class Sheet extends Observable implements Environment {
         if (slot == null) {
             return "";
         }
-        return slot.print(this);
+        try {
+            return slot.print(this);
+        } catch (XLException e) {
+            return "ERROR: " + e.getLocalizedMessage();
+        }
     }
+
+    public String printExpr(String key) {
+        Slot slot = map.get(key);
+        if (slot == null) {
+            return "";
+        }
+        try {
+            return slot.toString();
+        } catch (XLException e) {
+            return "ERROR";
+        }
+    }
+
 
     public double value(String name) {
         if (map.get(name) == null) {
@@ -89,5 +111,9 @@ public class Sheet extends Observable implements Environment {
         map = new HashMap<String, Slot>();
         setChanged();
         notifyObservers();
+    }
+
+    public String getError() {
+        return currentError;
     }
 }
