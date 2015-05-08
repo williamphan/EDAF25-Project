@@ -43,12 +43,12 @@ public class Sheet extends Observable implements Environment {
 			value.value(this);
 		} catch (XLException e) {
 			System.out.println(e.toString());
-			return false;
+			return true;
 		}
 
 		map.put(key, previousSlot);
 
-		return true;
+		return false;
 	}
 
 	// Plats för fler metoder
