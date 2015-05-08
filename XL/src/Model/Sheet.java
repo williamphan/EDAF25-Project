@@ -10,7 +10,7 @@ public class Sheet extends Observable implements Environment {
     private HashMap<String, Slot> map;
 
     public Sheet() {
-        map = new HashMap<>();
+        map = new HashMap<String, Slot>();
     }
 
     public boolean addSlot(String key, Slot value) {
