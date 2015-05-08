@@ -31,22 +31,15 @@ public class Sheet extends Observable implements Environment {
 	/**
 	 * @return True if slot was removed, false otherwise.
 	 */
-	public boolean removeSlot(String key) {
-		Slot currentSlot = map.get(key);
-		
-		try {
-			// något
-		} catch (XLException e) {
-			// något annat
-			
-			return false;
+	public boolean removeSlot(String key) throws XLException {
+		if (addSlot(key, new FakeSlot())) {
+			map.remove(key);
+			setChanged();
+			notifyObservers();
+			return true;
+		} else {
+			throw new XLException(key + " could not be removed.");
 		}
-		
-		map.remove(key);
-		setChanged();
-		notifyObservers();
-		
-		return true;
 	}
 
 	/**
@@ -55,8 +48,7 @@ public class Sheet extends Observable implements Environment {
 	private boolean checkCircular(String key, Slot value) {
 		Slot currentSlot = map.get(key);
 
-		FakeSlot fakeSlot = new FakeSlot();
-		map.put(key, fakeSlot);
+		map.put(key, new FakeSlot());
 
 		try {
 			value.value(this);
