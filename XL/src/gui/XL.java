@@ -3,6 +3,8 @@ package gui;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 import static java.awt.BorderLayout.SOUTH;
+
+import Model.Sheet;
 import gui.menu.XLMenuBar;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,6 +18,7 @@ public class XL extends JFrame implements Printable {
     private XLCounter counter;
     private StatusLabel statusLabel = new StatusLabel();
     private XLList xlList;
+    private Sheet sheet;
 
     public XL(XL oldXL) {
         this(oldXL.xlList, oldXL.counter);
@@ -27,6 +30,7 @@ public class XL extends JFrame implements Printable {
         this.counter = counter;
         xlList.add(this);
         counter.increment();
+        sheet = new Sheet();
         CurrentSlot currentSlot = new CurrentSlot();
         JPanel statusPanel = new StatusPanel(statusLabel);
         JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentSlot);
@@ -34,7 +38,7 @@ public class XL extends JFrame implements Printable {
         add(NORTH, statusPanel);
         add(CENTER, editor);
         add(SOUTH, sheetPanel);
-        setJMenuBar(new XLMenuBar(this, xlList, statusLabel));
+        setJMenuBar(new XLMenuBar(this, xlList, statusLabel, sheet));
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
