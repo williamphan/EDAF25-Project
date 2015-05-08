@@ -1,13 +1,13 @@
 package Model;
 
-import util.XLException;
 import expr.Environment;
 
 public class FakeSlot implements Slot {
 
 	@Override
-	public double value(Environment env) throws XLException {
-		throw new XLException("Circular dependency");
+	public double value(Environment env) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
