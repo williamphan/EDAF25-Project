@@ -3,7 +3,9 @@ package Model;
 import expr.Environment;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Observable;
+import java.util.Set;
 
 import util.XLException;
 
@@ -116,4 +118,9 @@ public class Sheet extends Observable implements Environment {
     public String getError() {
         return currentError;
     }
+
+	public Set<Entry<String, Slot>> getEntries() {
+		// TODO Auto-generated method stub
+		return map.entrySet();
+	}
 }
