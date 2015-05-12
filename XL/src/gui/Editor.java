@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JTextField;
-
+// TODO Tror inte denna är färdig då det finns många fel när man gör inmatningat
 public class Editor extends JTextField implements ActionListener, Observer {
     private CurrentSlot currentSlot;
     private Sheet sheet;
