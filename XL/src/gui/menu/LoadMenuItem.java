@@ -41,6 +41,7 @@ class LoadMenuItem extends OpenMenuItem {
     	catch(XLException exe){
     		statusLabel.setText("Could not load file: " + exe.getMessage());
     	}	
+    	xl.setData(map);
     }
 
     protected int openDialog(JFileChooser fileChooser) {
