@@ -123,4 +123,10 @@ public class Sheet extends Observable implements Environment {
 		// TODO Auto-generated method stub
 		return map.entrySet();
 	}
+	
+	 public void loadMap(HashMap<String, Slot> map) {
+		this.map = map;
+		setChanged();
+		notifyObservers();
+	}
 }
