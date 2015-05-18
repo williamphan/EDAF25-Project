@@ -19,7 +19,6 @@ public class Sheet extends Observable implements Environment {
     //TODO: Menu, load, save osv.
 
 
-
     public Sheet() {
         map = new HashMap<String, Slot>();
     }
@@ -31,7 +30,7 @@ public class Sheet extends Observable implements Environment {
         Slot value = SlotFactory.create(text);
         if (checkCircular(key, value)) {
             errorKey = key;
-            currentError = "Circular ERROR in " + errorKey;
+            currentError += "check " + key;
         } else {
             if (key.equals(errorKey)) {
                 currentError = "";
@@ -68,11 +67,15 @@ public class Sheet extends Observable implements Environment {
             value.value(this);
         } catch (XLException e) {
             map.put(key, currentSlot);
+            currentError = "Circular error, ";
+            return true;
+        } catch (NullPointerException e) {
+            System.out.println("Null");
+            currentError = "Bad input, ";
             return true;
         }
 
         map.put(key, currentSlot);
-
         return false;
     }
 
@@ -119,14 +122,14 @@ public class Sheet extends Observable implements Environment {
         return currentError;
     }
 
-	public Set<Entry<String, Slot>> getEntries() {
-		// TODO Auto-generated method stub
-		return map.entrySet();
-	}
-	
-	 public void loadMap(HashMap<String, Slot> map) {
-		this.map = map;
-		setChanged();
-		notifyObservers();
-	}
+    public Set<Entry<String, Slot>> getEntries() {
+        // TODO Auto-generated method stub
+        return map.entrySet();
+    }
+
+    public void loadMap(HashMap<String, Slot> map) {
+        this.map = map;
+        setChanged();
+        notifyObservers();
+    }
 }

@@ -1,15 +1,14 @@
 package gui;
 
 import Model.Sheet;
-import util.XLException;
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JTextField;
-// TODO Tror inte denna är färdig då det finns många fel när man gör inmatningat
+
+// TODO Tror inte denna ï¿½r fï¿½rdig dï¿½ det finns mï¿½nga fel nï¿½r man gï¿½r inmatningat
 public class Editor extends JTextField implements ActionListener, Observer {
     private CurrentSlot currentSlot;
     private Sheet sheet;
@@ -37,6 +36,11 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setText(sheet.printExpr(currentSlot.toString()));
+        if(sheet.printExpr(currentSlot.toString()).contains("FakeSlot")){
+            setText("");
+        }
+        else {
+            setText(sheet.printExpr(currentSlot.toString()));
+        }
     }
 }
