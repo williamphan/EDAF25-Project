@@ -11,6 +11,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -27,7 +29,7 @@ public class XL extends JFrame implements Printable {
     public XL(XL oldXL) {
         this(oldXL.xlList, oldXL.counter);
     }
-
+    
     public XL(XLList xlList, XLCounter counter) {
         super("Untitled-" + counter);
         this.xlList = xlList;
@@ -71,5 +73,9 @@ public class XL extends JFrame implements Printable {
 	public Set<Entry<String, Slot>> getData() {
 		// TODO Auto-generated method stub
 		return sheet.getEntries();
+	}
+	
+	public void setData(Map<String, Slot> map) {
+		sheet.loadMap((HashMap<String, Slot>) map);
 	}
 }
