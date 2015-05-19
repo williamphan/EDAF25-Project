@@ -67,14 +67,16 @@ public class Sheet extends Observable implements Environment {
         try {
             value.value(this);
         } catch (XLException e) {
-            map.put(key, currentSlot);
+//            map.put(key, currentSlot);
             currentError = "Circular error, ";
             return true;
         } catch (NullPointerException e) {
-            map.put(key, currentSlot);
+//            map.put(key, currentSlot);
             currentError = "Bad input, ";
             return true;
         }
+
+        //^map.put() i catch-satserna sabbar felmeddelanden, för/nackdelar?
 
         map.put(key, currentSlot);
         return false;
@@ -133,7 +135,7 @@ public class Sheet extends Observable implements Environment {
         this.map = map;
         boolean badFile = false;
         Iterator<Entry<String, Slot>> itr = map.entrySet().iterator();
-        while(itr.hasNext() && !badFile){
+        while (itr.hasNext() && !badFile) {
             Entry<String, Slot> entry = itr.next();
             if (checkCircular(entry.getKey(), entry.getValue())) {
                 currentError += "cannot load such files";
@@ -143,6 +145,6 @@ public class Sheet extends Observable implements Environment {
         }
         setChanged();
         notifyObservers();
-        currentError = "";  //Resettar om man laddar in en ny fil
+        //currentError = "";  //Resettar om man laddar in en ny fil
     }
 }
