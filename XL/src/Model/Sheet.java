@@ -3,6 +3,7 @@ package Model;
 import expr.Environment;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Set;
@@ -70,7 +71,7 @@ public class Sheet extends Observable implements Environment {
             currentError = "Circular error, ";
             return true;
         } catch (NullPointerException e) {
-            System.out.println("Null");
+            map.put(key, currentSlot);
             currentError = "Bad input, ";
             return true;
         }
@@ -87,7 +88,7 @@ public class Sheet extends Observable implements Environment {
         try {
             return slot.print(this);
         } catch (XLException e) {
-            return "ERROR: " + e.getLocalizedMessage();
+            return "ERROR    ";
         }
     }
 
@@ -128,8 +129,20 @@ public class Sheet extends Observable implements Environment {
     }
 
     public void loadMap(HashMap<String, Slot> map) {
+        HashMap<String, Slot> temp = this.map;  // Behövs om man vill spara den sheet som redan finns
         this.map = map;
+        boolean badFile = false;
+        Iterator<Entry<String, Slot>> itr = map.entrySet().iterator();
+        while(itr.hasNext() && !badFile){
+            Entry<String, Slot> entry = itr.next();
+            if (checkCircular(entry.getKey(), entry.getValue())) {
+                currentError += "cannot load such files";
+                this.map = temp;   //Använd gamla sheet istället
+                badFile = true; // Kan egentligen ha en break
+            }
+        }
         setChanged();
         notifyObservers();
+        currentError = "";  //Resettar om man laddar in en ny fil
     }
 }
