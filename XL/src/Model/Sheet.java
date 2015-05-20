@@ -71,7 +71,7 @@ public class Sheet extends Observable implements Environment {
             value.value(this);
         } catch (XLException e) {
 //            map.put(key, currentSlot);
-            currentError = "Circular error, ";
+            currentError = "Bad input, ";
             return true;
         } catch (NullPointerException e) {
 //            map.put(key, currentSlot);
