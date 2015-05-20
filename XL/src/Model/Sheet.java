@@ -48,6 +48,9 @@ public class Sheet extends Observable implements Environment {
     public boolean removeSlot(String key) {
         if (map.containsKey(key)) {
             map.remove(key);
+            if (key.equals(errorKey)) {
+                currentError = "";
+            }
             setChanged();
             notifyObservers();
             return true;
@@ -145,6 +148,6 @@ public class Sheet extends Observable implements Environment {
         }
         setChanged();
         notifyObservers();
-        //currentError = "";  //Resettar om man laddar in en ny fil
+        currentError = "";  //Resettar om man laddar in en ny fil
     }
 }
