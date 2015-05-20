@@ -1,18 +1,16 @@
 package gui.menu;
 
+import Model.Slot;
 import gui.StatusLabel;
 import gui.XL;
+import util.XLBufferedReader;
+import util.XLException;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import javax.swing.JFileChooser;
-
-import Model.Slot;
-import util.XLBufferedReader;
-import util.XLException;
 
 class LoadMenuItem extends OpenMenuItem {
 
@@ -21,7 +19,6 @@ class LoadMenuItem extends OpenMenuItem {
     }
 
     protected void action(String path) throws FileNotFoundException {
-        // TODO
         XLBufferedReader buffer = null;
         Map<String, Slot> map = new HashMap<String, Slot>();
         try {

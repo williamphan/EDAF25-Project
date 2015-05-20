@@ -32,7 +32,6 @@ public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
         } else if (this.getBackground() != Color.yellow) {
             this.setBackground(Color.WHITE);
         }
-//        System.out.println("Observers: " + currentSlot.countObservers());
         currentSlot.deleteObserver(this);
     }
 

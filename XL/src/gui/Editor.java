@@ -8,7 +8,6 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JTextField;
 
-// TODO Tror inte denna �r f�rdig d� det finns m�nga fel n�r man g�r inmatningat
 public class Editor extends JTextField implements ActionListener, Observer {
     private CurrentSlot currentSlot;
     private Sheet sheet;

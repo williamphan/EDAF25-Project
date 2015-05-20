@@ -71,7 +71,6 @@ public class XL extends JFrame implements Printable {
     }
 
 	public Set<Entry<String, Slot>> getData() {
-		// TODO Auto-generated method stub
 		return sheet.getEntries();
 	}
 	

@@ -14,19 +14,10 @@ public class Sheet extends Observable implements Environment {
     private HashMap<String, Slot> map;
     private String currentError = "", errorKey = "";
 
-    //TODO: Fixa error vid borttagning av ett beroende
-    //TODO: Cirkulärt = röda rutor?
-    //TODO: Exception vid felinmatning
-    //TODO: Menu, load, save osv.
-
-
     public Sheet() {
         map = new HashMap<String, Slot>();
     }
 
-    /**
-     * @return True if slot was added, false otherwise.
-     */
     public void addSlot(String key, String text) {
         Slot value = SlotFactory.create(text);
         if (checkCircular(key, value)) {
@@ -42,9 +33,6 @@ public class Sheet extends Observable implements Environment {
         notifyObservers();
     }
 
-    /**
-     * @return True if slot was removed, false otherwise.
-     */
     public boolean removeSlot(String key) {
         if (map.containsKey(key)) {
             map.remove(key);
@@ -59,9 +47,6 @@ public class Sheet extends Observable implements Environment {
         }
     }
 
-    /**
-     * @return True if circular dependency is detected, false otherwise.
-     */
     private boolean checkCircular(String key, Slot value) {
         Slot currentSlot = map.get(key);
 
@@ -70,16 +55,12 @@ public class Sheet extends Observable implements Environment {
         try {
             value.value(this);
         } catch (XLException e) {
-//            map.put(key, currentSlot);
             currentError = "Bad input, ";
             return true;
         } catch (NullPointerException e) {
-//            map.put(key, currentSlot);
             currentError = "Bad input, ";
             return true;
         }
-
-        //^map.put() i catch-satserna sabbar felmeddelanden, för/nackdelar?
 
         map.put(key, currentSlot);
         return false;
@@ -129,12 +110,11 @@ public class Sheet extends Observable implements Environment {
     }
 
     public Set<Entry<String, Slot>> getEntries() {
-        // TODO Auto-generated method stub
         return map.entrySet();
     }
 
     public void loadMap(HashMap<String, Slot> map) {
-        HashMap<String, Slot> temp = this.map;  // Behövs om man vill spara den sheet som redan finns
+        HashMap<String, Slot> temp = this.map;
         this.map = map;
         boolean badFile = false;
         Iterator<Entry<String, Slot>> itr = map.entrySet().iterator();
@@ -142,12 +122,12 @@ public class Sheet extends Observable implements Environment {
             Entry<String, Slot> entry = itr.next();
             if (checkCircular(entry.getKey(), entry.getValue())) {
                 currentError += "cannot load such files";
-                this.map = temp;   //Använd gamla sheet istället
-                badFile = true; // Kan egentligen ha en break
+                this.map = temp;
+                badFile = true;
             }
         }
         setChanged();
         notifyObservers();
-        currentError = "";  //Resettar om man laddar in en ny fil
+        currentError = "";
     }
 }
